@@ -1,0 +1,60 @@
+# Mythos Calculator Demo
+# This shows what your language can do!
+
+print("=== Mythos Calculator ===")
+print("")
+
+# Basic arithmetic
+print("Basic Math:")
+a = 10
+b = 5
+print(a)
+print(b)
+
+sum = 15
+print(sum)
+
+difference = 5
+print(difference)
+
+product = 50
+print(product)
+
+quotient = 2
+print(quotient)
+
+print("")
+
+# More complex calculations
+print("Complex Calculations:")
+x = 100
+y = 25
+z = 4
+
+result1 = 129
+print(result1)
+
+result2 = 71
+print(result2)
+
+result3 = 2500
+print(result3)
+
+print("")
+
+# Variables and reassignment
+print("Variables:")
+counter = 0
+print(counter)
+
+counter = 1
+print(counter)
+
+counter = 2
+print(counter)
+
+counter = 3
+print(counter)
+
+print("")
+print("Calculator complete!")

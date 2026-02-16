@@ -1,0 +1,145 @@
+Metadata-Version: 2.4
+Name: mythos-lang
+Version: 1.0.0
+Summary: A powerful, beginner-friendly programming language
+Home-page: https://github.com/mythos-lang/mythos
+Author: Mythos Team
+Author-email: Mythos Team <team@mythos-lang.org>
+License: MIT
+Project-URL: Homepage, https://github.com/yourusername/mythos
+Project-URL: Documentation, https://github.com/yourusername/mythos
+Project-URL: Repository, https://github.com/yourusername/mythos
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Compilers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=1.20.0
+Dynamic: author
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-python
+
+# Mythos Programming Language
+
+**A powerful, expressive, and beginner-friendly programming language for building anything.**
+
+Mythos combines the simplicity of Python, the flexibility of JavaScript, and built-in support for graphics, games, web development, and AI - all in one unified language.
+
+## Features
+
+- 🎯 **Simple & Expressive**: Clean syntax that reads like natural language
+- 🌐 **Web Native**: Build full-stack web apps without HTML/CSS
+- 🎮 **Game Engine Built-in**: Create 2D and 3D games with ease
+- 🤖 **AI Ready**: Built-in AI scripting, behavior trees, and pathfinding
+- 🔢 **Math Powerful**: Advanced mathematics, physics, and symbolic computation
+- 🚀 **Fast**: Optimized bytecode compiler and runtime
+- 📦 **Batteries Included**: Comprehensive standard library
+
+## Quick Start
+
+```mythos
+# Hello World
+print("Hello, Mythos!")
+
+# Math
+x = 10
+y = sqrt(x^2 + 5)
+print(y)
+
+# Web App
+web.app {
+  route "/" {
+    ui.text("Welcome to Mythos!")
+    ui.button("Click me") {
+      print("Button clicked!")
+    }
+  }
+}
+
+# 3D Game
+scene main {
+  cube size:1 position:(0, 0, 0) color:#ff0000
+  light sun type:directional intensity:1.0
+  camera position:(0, 5, 10) lookAt:(0, 0, 0)
+}
+```
+
+## Installation
+
+> **Note:** Mythos is a newly created language and not yet published to package managers. Use the local installation method below.
+
+### Quick Install
+
+**Windows:**
+```bash
+cd path\to\Mythos
+install.bat
+```
+
+**macOS/Linux:**
+```bash
+cd path/to/Mythos
+chmod +x install.sh
+./install.sh
+```
+
+### Manual Installation
+
+```bash
+# 1. Navigate to Mythos directory
+cd path/to/Mythos
+
+# 2. Install dependencies
+pip install numpy
+
+# 3. Install Mythos
+pip install -e .
+
+# 4. Test it
+mythos --version
+mythos run examples/hello_world.mythos
+```
+
+### Run Without Installing
+
+```bash
+python mythos_cli/cli.py run examples/hello_world.mythos
+```
+
+**📖 Having trouble? See [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md) for detailed help!**
+
+## Documentation
+
+- [Getting Started](docs/getting-started.md)
+- [Language Reference](docs/language-reference.md)
+- [Standard Library](docs/stdlib.md)
+- [Web Development](docs/web.md)
+- [Game Development](docs/games.md)
+- [Examples](examples/)
+
+## Project Structure
+
+```
+Mythos/
+├── compiler/          # Lexer, parser, AST, bytecode compiler
+├── runtime/           # Virtual machine and execution engine
+├── standard_library/  # Core libraries (math, io, web, graphics, AI)
+├── engine/            # 2D/3D rendering engine
+├── web/               # Web framework and server
+├── examples/          # Example programs
+├── tools/             # Development tools
+├── tests/             # Test suite
+└── docs/              # Documentation
+```
+
+## License
+
+MIT License - See LICENSE file for details

@@ -1,0 +1,2 @@
+[console_scripts]
+mythos = mythos_cli.cli:main
