@@ -6,7 +6,7 @@ A powerful programming language!
 
 ```bash
 # Clone the repository
-git clone https://github.com/YourUsername/Mythos
+git clone https://github.com/Sergiu0607/Mythos
 cd Mythos
 
 # Install dependencies
