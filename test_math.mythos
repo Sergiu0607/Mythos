@@ -1,0 +1,12 @@
+# Test math operations
+x = 10
+y = 5
+z = 3
+
+print("Testing addition:")
+result = x + y
+print(result)
+
+print("Testing subtraction:")
+result2 = x - y
+print(result2)

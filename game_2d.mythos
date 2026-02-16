@@ -1,0 +1,88 @@
+# 2D Game Example - Simple Platformer
+
+# Create game scene
+scene game {
+  # Player
+  player sprite:"player.png" position:(100, 400) size:(32, 32) {
+    velocity: Vector2(0, 0)
+    speed: 200
+    jump_force: 500
+    on_ground: false
+  }
+  
+  # Platform
+  platform sprite:"platform.png" position:(0, 500) size:(800, 100) {
+    static: true
+  }
+  
+  # Enemy
+  enemy sprite:"enemy.png" position:(400, 400) size:(32, 32) {
+    velocity: Vector2(-50, 0)
+    patrol_range: 200
+    start_x: 400
+  }
+  
+  # Collectible
+  coin sprite:"coin.png" position:(300, 350) size:(16, 16) {
+    collected: false
+  }
+  
+  # Camera
+  camera position:(400, 300) size:(800, 600)
+}
+
+# Game logic
+function update(dt) {
+  # Player movement
+  if input.key_pressed("left") {
+    player.velocity.x = -player.speed
+  } elif input.key_pressed("right") {
+    player.velocity.x = player.speed
+  } else {
+    player.velocity.x = 0
+  }
+  
+  # Jump
+  if input.key_pressed("space") and player.on_ground {
+    player.velocity.y = -player.jump_force
+    player.on_ground = false
+  }
+  
+  # Apply gravity
+  player.velocity.y += 980 * dt
+  
+  # Update player position
+  player.position += player.velocity * dt
+  
+  # Check collision with platform
+  if collides(player, platform) {
+    player.position.y = platform.position.y - player.size.y
+    player.velocity.y = 0
+    player.on_ground = true
+  }
+  
+  # Enemy AI
+  enemy.position.x += enemy.velocity.x * dt
+  if abs(enemy.position.x - enemy.start_x) > enemy.patrol_range {
+    enemy.velocity.x = -enemy.velocity.x
+  }
+  
+  # Check collision with enemy
+  if collides(player, enemy) {
+    print("Game Over!")
+    reset_game()
+  }
+  
+  # Check collision with coin
+  if collides(player, coin) and not coin.collected {
+    coin.collected = true
+    coin.visible = false
+    print("Coin collected!")
+  }
+  
+  # Camera follows player
+  camera.position.x = player.position.x
+}
+
+# Start game
+game.start()

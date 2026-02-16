@@ -1,0 +1,137 @@
+# 3D Game Example - First Person Shooter
+
+# Create 3D scene
+scene fps_game {
+  # Player camera
+  camera position:(0, 1.8, 0) fov:60 {
+    rotation: Vector3(0, 0, 0)
+    move_speed: 5
+    look_sensitivity: 0.1
+  }
+  
+  # Ground
+  plane size:(100, 100) position:(0, 0, 0) color:#808080 {
+    material: "concrete"
+  }
+  
+  # Walls
+  cube size:(1, 3, 20) position:(-10, 1.5, 0) color:#8B4513
+  cube size:(1, 3, 20) position:(10, 1.5, 0) color:#8B4513
+  cube size:(20, 3, 1) position:(0, 1.5, -10) color:#8B4513
+  cube size:(20, 3, 1) position:(0, 1.5, 10) color:#8B4513
+  
+  # Enemies
+  cube size:(0.5, 1.8, 0.5) position:(5, 0.9, 5) color:#FF0000 {
+    health: 100
+    ai: "patrol"
+    patrol_points: [
+      Vector3(5, 0.9, 5),
+      Vector3(-5, 0.9, 5),
+      Vector3(-5, 0.9, -5),
+      Vector3(5, 0.9, -5)
+    ]
+    current_point: 0
+  }
+  
+  # Lighting
+  light sun type:directional intensity:1.0 direction:(0.5, -1, 0.5)
+  light ambient intensity:0.3 color:#404040
+  
+  # Weapon
+  cube size:(0.1, 0.1, 0.5) position:(0.3, 1.5, 0.5) color:#333333 {
+    parent: camera
+    damage: 25
+  }
+}
+
+# Game logic
+function update(dt) {
+  # Mouse look
+  mouse_delta = input.mouse_delta()
+  camera.rotation.y += mouse_delta.x * camera.look_sensitivity
+  camera.rotation.x += mouse_delta.y * camera.look_sensitivity
+  camera.rotation.x = clamp(camera.rotation.x, -89, 89)
+  
+  # Movement
+  forward = camera.forward()
+  right = camera.right()
+  
+  move_dir = Vector3(0, 0, 0)
+  
+  if input.key_pressed("w") {
+    move_dir += forward
+  }
+  if input.key_pressed("s") {
+    move_dir -= forward
+  }
+  if input.key_pressed("a") {
+    move_dir -= right
+  }
+  if input.key_pressed("d") {
+    move_dir += right
+  }
+  
+  if move_dir.length() > 0 {
+    move_dir = move_dir.normalize()
+    camera.position += move_dir * camera.move_speed * dt
+  }
+  
+  # Shooting
+  if input.mouse_button_pressed("left") {
+    shoot()
+  }
+  
+  # Enemy AI
+  for enemy in scene.find_all("enemy") {
+    update_enemy_ai(enemy, dt)
+  }
+}
+
+function shoot() {
+  # Raycast from camera
+  ray = Ray(camera.position, camera.forward())
+  hit = physics.raycast(ray, max_distance:100)
+  
+  if hit {
+    if hit.object.has_tag("enemy") {
+      hit.object.health -= weapon.damage
+      
+      if hit.object.health <= 0 {
+        hit.object.destroy()
+        print("Enemy eliminated!")
+      }
+    }
+  }
+}
+
+function update_enemy_ai(enemy, dt) {
+  # Simple patrol AI
+  target = enemy.patrol_points[enemy.current_point]
+  direction = (target - enemy.position).normalize()
+  
+  enemy.position += direction * 2 * dt
+  
+  # Check if reached patrol point
+  if enemy.position.distance_to(target) < 0.5 {
+    enemy.current_point = (enemy.current_point + 1) % len(enemy.patrol_points)
+  }
+  
+  # Look at player
+  to_player = (camera.position - enemy.position).normalize()
+  enemy.rotation.y = atan2(to_player.x, to_player.z)
+  
+  # Shoot at player if in range
+  distance_to_player = enemy.position.distance_to(camera.position)
+  if distance_to_player < 15 {
+    enemy_shoot(enemy)
+  }
+}
+
+function enemy_shoot(enemy) {
+  # Enemy shooting logic
+  print("Enemy shoots!")
+}
+
+# Start game
+game.start()
+input.lock_mouse()

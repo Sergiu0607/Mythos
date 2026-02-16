@@ -1,0 +1,24 @@
+print("mythos 2.0 rupeeee")
+
+x = 102
+a = 20 - 10
+y = x + a + 1000
+
+print("Variables")
+print(x)
+print(a)
+print(y)
+
+counter = 10
+print("counter")
+print(counter)
+
+counter = 20
+print("counter")
+print(counter)
+
+difference = a + y - x
+print(difference)
+
+sum = 1020102 - y + a 
+print(sum)

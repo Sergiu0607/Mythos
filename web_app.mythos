@@ -1,0 +1,53 @@
+# Simple Web Application in Mythos
+
+web.app {
+  route "/" {
+    page = ui.page("Welcome to Mythos")
+    
+    # Add header
+    page.add(ui.text("Welcome to Mythos Web!", "h1"))
+    
+    # Add description
+    page.add(ui.text("Build web apps without HTML/CSS!", "p"))
+    
+    # Add button
+    button = ui.button("Click Me") {
+      print("Button clicked!")
+    }
+    page.add(button)
+    
+    # Add input field
+    input = ui.input("text", "Enter your name")
+    page.add(input)
+    
+    # Add card
+    card = ui.card("Features", "Mythos makes web development simple and fun!")
+    page.add(card)
+    
+    # Add list
+    features = ["Easy syntax", "Built-in UI components", "No HTML/CSS needed"]
+    page.add(ui.list(features))
+    
+    return page.render()
+  }
+  
+  route "/about" {
+    page = ui.page("About Mythos")
+    page.add(ui.text("About Mythos", "h1"))
+    page.add(ui.text("Mythos is a powerful programming language for everyone.", "p"))
+    page.add(ui.link("/", "Go back home"))
+    return page.render()
+  }
+  
+  route "/api/data" {
+    data = {
+      name: "Mythos",
+      version: "1.0.0",
+      features: ["Web", "Games", "AI", "Math"]
+    }
+    return json(data)
+  }
+}
+
+# Start server
+web.start(port: 8000)

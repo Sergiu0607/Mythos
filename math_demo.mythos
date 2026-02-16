@@ -1,0 +1,49 @@
+# Mythos Math Examples
+
+# Basic arithmetic
+x = 10
+y = 5
+print("Addition:", x + y)
+print("Subtraction:", x - y)
+print("Multiplication:", x * y)
+print("Division:", x / y)
+print("Power:", x ^ 2)
+print("Modulo:", x % y)
+
+# Trigonometry
+angle = 45
+print("Sin(45°):", sin(angle))
+print("Cos(45°):", cos(angle))
+print("Tan(45°):", tan(angle))
+
+# Advanced math
+print("Square root of 16:", sqrt(16))
+print("Absolute value of -10:", abs(-10))
+print("Floor of 3.7:", floor(3.7))
+print("Ceil of 3.2:", ceil(3.2))
+
+# Vectors
+v1 = Vector3(1, 2, 3)
+v2 = Vector3(4, 5, 6)
+v3 = v1 + v2
+print("Vector addition:", v3)
+
+dot_product = v1.dot(v2)
+print("Dot product:", dot_product)
+
+cross_product = v1.cross(v2)
+print("Cross product:", cross_product)
+
+# Physics calculations
+mass = 10
+velocity = 5
+kinetic_energy = 0.5 * mass * velocity ^ 2
+print("Kinetic energy:", kinetic_energy)
+
+# Projectile motion
+initial_velocity = 20
+launch_angle = 45
+max_height, range, time = projectile_motion(initial_velocity, launch_angle)
+print("Max height:", max_height)
+print("Range:", range)
+print("Time of flight:", time)

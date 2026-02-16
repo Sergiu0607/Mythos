@@ -1,0 +1,20 @@
+# Mythos Programming Language Dependencies
+
+# Core dependencies
+numpy>=1.20.0
+
+# Development dependencies (optional)
+# Uncomment if you want to contribute to Mythos development
+# pytest>=6.0
+# pytest-cov>=2.0
+# black>=21.0
+# flake8>=3.9
+
+# Web dependencies (optional)
+# Uncomment if you're building web applications
+# aiohttp>=3.8
+
+# Graphics dependencies (optional)
+# Uncomment if you're building games
+# pygame>=2.0
+# PyOpenGL>=3.1

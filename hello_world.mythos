@@ -1,0 +1,21 @@
+# Hello World in Mythos
+print("Hello, Mythos!")
+
+# Variables
+name = "World"
+greeting = "Hello, " + name + "!"
+print(greeting)
+
+# Math
+x = 10
+y = 20
+sum = x + y
+print("Sum:", sum)
+
+# Functions
+function greet(name) {
+  return "Hello, " + name + "!"
+}
+
+message = greet("Mythos")
+print(message)

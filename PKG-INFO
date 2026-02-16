@@ -1,3 +1,32 @@
+Metadata-Version: 2.4
+Name: mythos-lang
+Version: 1.0.0
+Summary: A powerful, beginner-friendly programming language
+Home-page: https://github.com/mythos-lang/mythos
+Author: Mythos Team
+Author-email: Mythos Team <team@mythos-lang.org>
+License: MIT
+Project-URL: Homepage, https://github.com/yourusername/mythos
+Project-URL: Documentation, https://github.com/yourusername/mythos
+Project-URL: Repository, https://github.com/yourusername/mythos
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Compilers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=1.20.0
+Dynamic: author
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-python
+
 # Mythos Programming Language
 
 **A powerful, expressive, and beginner-friendly programming language for building anything.**
